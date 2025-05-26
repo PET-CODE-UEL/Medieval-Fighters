@@ -9,20 +9,26 @@ class Game:
         pygame.display.set_caption("Game")
         self.running = True
         self.bg = pygame.image.load("assets/image/florest.jpg").convert_alpha()
+        self.clock = pygame.time.Clock()
 
 
 
 
     def play(self):
 
-        lutador_1 = Lutador(200, 360)
-        lutador_2 = Lutador(700, 360)
+        lutador_1 = Lutador(SCREEN_WIDTH/2 - 50, 360)
+        #lutador_2 = Lutador(700, 360)
 
 
         while self.running:
+            self.clock.tick(FPS)
             self._draw_background()
+
+            lutador_1.move(True)
+            #lutador_2.move(False)
+
             lutador_1.draw(self.screen)
-            lutador_2.draw(self.screen)
+            #lutador_2.draw(self.screen)
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
