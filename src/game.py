@@ -1,4 +1,5 @@
 import pygame
+
 from config import *
 from lutador import Lutador
 
@@ -17,18 +18,18 @@ class Game:
     def play(self):
 
         lutador_1 = Lutador(SCREEN_WIDTH/2 - 50, 360)
-        #lutador_2 = Lutador(700, 360)
+        lutador_2 = Lutador(700, 360)
 
 
         while self.running:
             self.clock.tick(FPS)
             self._draw_background()
 
-            lutador_1.move(True)
-            #lutador_2.move(False)
+            lutador_1.move(True, self.screen)
+            #lutador_2.move(False, self.screen)
 
             lutador_1.draw(self.screen)
-            #lutador_2.draw(self.screen)
+            lutador_2.draw(self.screen)
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:

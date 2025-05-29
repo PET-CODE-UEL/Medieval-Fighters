@@ -7,11 +7,17 @@ class Lutador:
         self.rect = pygame.Rect(x, y, 80, 180)
         self.vel = 0
         self.jump = False
+        self.attack_type = 0
 
     def draw(self, surface):
         pygame.draw.rect(surface, (0, 255, 0), self.rect)
 
-    def move(self, num):
+    def attack(self, surface):
+        attacking_rect = pygame.Rect(self.rect.centerx, self.rect.y, 2 * self.rect.width, self.rect.height)
+        pygame.draw.rect(surface, (0, 0, 255), attacking_rect)
+
+
+    def move(self, num, surface):
         dx = 0
         dy = 0
 
@@ -26,6 +32,15 @@ class Lutador:
             if key[pygame.K_w] and not self.jump:
                 self.vel = -30
                 self.jump = True
+            # attack
+            if key[pygame.K_r] or key[pygame.K_f]:
+
+                # tipo de ataque
+                if key[pygame.K_r]:
+                    self.attak_type = 1
+                    self.attack(surface)
+                if key[pygame.K_f]:
+                    self.attak_type = 2
 
         # Aplicando gravidade
         self.vel += GRAVITY
