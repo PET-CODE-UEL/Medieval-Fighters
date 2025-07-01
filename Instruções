@@ -1,0 +1,10 @@
+Mago{
+controles: w - s - a - d
+ataques: r - t
+
+}
+
+Guerreiro{
+controles: up - down - left - right
+ataques: 1 - 2
+}
